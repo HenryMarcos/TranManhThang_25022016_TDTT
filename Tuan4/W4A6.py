@@ -10,3 +10,7 @@ for i in range(a, b + 1):
     if isPrime(i):
         ans += i
 print(ans)
+
+def sumof(a, b):
+    return a + b
+

@@ -3,12 +3,14 @@ def rev_num(num):
     while num > 0:
         ans *= 10
         ans += num % 10
-        num = int(num / 10)
+        num = num // 10
     return ans
 
 n = int(input())
+c = 0
 
 while n != rev_num(n):
     n = n + rev_num(n)
+    c += 1
 
-print(rev_num(n))
+print(c, n)
