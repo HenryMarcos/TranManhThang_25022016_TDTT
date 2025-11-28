@@ -3,7 +3,7 @@ def is_that_that(num):
     ans = 0
     while num > 0:
         ar.add(num % 10)
-        num = int(num / 10)
+        num = num // 10
         ans += 1
     return len(ar) == ans 
 
