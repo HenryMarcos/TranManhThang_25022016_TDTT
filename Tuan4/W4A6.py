@@ -1,26 +1,20 @@
 import math
 import numpy as np
 
-def isPrime(num):
-    for i in range(2, int(num**0.5) + 1):
-        if num % i == 0:
-            return False
-    return True
-
-prime = []
-
 def makePrime(max_num):
-    prime.extend([True] * max_num)
+    prime = np.ones(max_num + 1, dtype=bool)
     prime[0:2] = False
     for i in range(2, int(math.sqrt(max_num)) + 1):
         if prime[i]:
             prime[i*i:max_num + 1:i] = False
+    return prime
 
 a, b = map(int, input().split())
-makePrime(b)
-ans = 0
-#for i in range(a, b + 1):
-#    if isPrime(i):
-#        ans += i
-#print(ans)
+new_prime = makePrime(b)
+
+value_array = np.nonzero(np.array(new_prime[a:]))[0].tolist()
+value_array = np.array(value_array) + a
+
+print(sum(value_array))
+
 
