@@ -1,0 +1,5 @@
+a = tuple(map(int, input().split()))
+b = tuple([x for x in a if x % 2 == 0])
+c = tuple([x for x in a if x % 2 != 0])
+print(b)
+print(c)
