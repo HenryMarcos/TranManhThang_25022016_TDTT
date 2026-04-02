@@ -39,5 +39,7 @@ public class Main {
 
         System.out.println("Kho Điện tử:");
         electronicWarehouse.checkInventory();
+
+        sc.close();
     }
 }

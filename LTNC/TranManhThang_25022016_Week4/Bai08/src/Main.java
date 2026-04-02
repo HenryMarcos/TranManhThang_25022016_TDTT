@@ -36,5 +36,6 @@ public class Main {
         hub.turnOffAll();
         System.out.println();
         hub.setupWifi();
+        sc.close();
     }
 }

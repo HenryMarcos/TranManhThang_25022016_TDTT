@@ -1,3 +1,5 @@
+
+
 public class SmartLight extends Electronic implements AdjustableLevel {
     static private final int maxLightLevel = 100;
     private int lightLevel;
