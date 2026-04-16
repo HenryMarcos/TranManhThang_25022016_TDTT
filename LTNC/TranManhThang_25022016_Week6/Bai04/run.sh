@@ -1,6 +1,3 @@
-export LANG=vi_VN.UTF-8
-export LC_ALL=vi_VN.UTF-8
-
 ROOT_DIR=$(pwd)
 SRC_DIR="$ROOT_DIR/src"
 BUILD_DIR="$ROOT_DIR/build"
