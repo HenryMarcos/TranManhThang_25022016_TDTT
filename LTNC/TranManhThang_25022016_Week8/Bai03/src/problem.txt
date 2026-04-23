@@ -1,0 +1,5 @@
+-Vấn đề thuộc tính (Inappropriate Intake): Lớp cha Vehicle chứa các thuộc tính chuyên biệt 
+(fuelLevel, batteryPercent) mà không phải tất cả các con đều dùng. 
+Điều này tạo ra "rác" dữ liệu: MotorBike vẫn mang theo batteryPercent dù không bao giờ dùng tới.
+-Vấn đề phương thức (Duplicated Code): Phương thức getInfo() ở các lớp con bị lặp lại cấu trúc chuỗi.
+Nếu sau này muốn đổi định dạng (ví dụ: đổi dấu [] thành ()), bạn phải sửa ở tất cả các lớp.

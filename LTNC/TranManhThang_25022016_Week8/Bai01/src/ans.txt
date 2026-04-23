@@ -1,0 +1,75 @@
+***Đoạn A:
+Code Smell: Meaningless Names (Tên biến tối nghĩa).
+Vấn đề: Các biến t, h, r, m, f không gợi nhớ ý nghĩa, khiến người đọc khó hiểu mục đích của hàm (ví dụ: h là hours, r là rate).
+Refactor: Rename Variables (Đặt lại tên biến có ý nghĩa).
+public double calculateFee(String type, int hours, double rate, boolean isMember) {
+    double baseFee = hours * rate;
+    if (isMember) {
+        baseFee = baseFee * 0.9;
+    }
+    return baseFee;
+}
+
+***Đoạn B:
+Code Smell: Large Class / Divergent Change (Lớp quá ôm đồm - vi phạm Single Responsibility Principle).
+Vấn đề: UserService vừa quản lý dữ liệu, vừa gửi email, vừa render UI, vừa xuất CSV. Khi logic gửi mail hay render thay đổi, class này đều bị ảnh hưởng.
+Refactor: Extract Class (Tách thành các lớp chuyên biệt).
+class UserService {
+    public User findById(int id) { /* ... */ return new User(); }
+}
+
+class EmailService {
+    public void sendWelcomeEmail(User user) { /* ... */ }
+    public void sendPasswordResetEmail(User user) { /* ... */ }
+}
+
+class UserPresenter {
+    public void renderUserProfile(User user) { /* ... */ }
+    public String exportUserToCsv(User user) { /* ... */ return ""; }
+}
+
+***Đoạn C:
+Code Smell: Switch Statements / Conditional Complexity (Lạm dụng câu lệnh điều kiện).
+Vấn đề: Mỗi khi thêm một hình mới, bạn phải sửa hàm getArea. Code khó mở rộng và dễ lỗi.
+Refactor: Replace Conditional with Polymorphism (Thay thế điều kiện bằng đa hình).
+
+interface Shape {
+    double getArea();
+}
+
+class Rectangle implements Shape {
+    private double a, b;
+    public Rectangle(double a, double b) { this.a = a; this.b = b; }
+    public double getArea() { return a * b; }
+}
+
+class Triangle implements Shape {
+    private double a, b;
+    public Triangle(double a, double b) { this.a = a; this.b = b; }
+    public double getArea() { return 0.5 * a * b; }
+}
+
+class Circle implements Shape {
+    private double radius;
+    public Circle(double radius) { this.radius = radius; }
+    public double getArea() { return Math.PI * radius * radius; }
+}
+
+
+***Đoạn D
+Code Smell: Data Clump (Nhóm dữ liệu luôn đi cùng nhau).
+Vấn đề: Các thuộc tính liên quan đến "Author" (email, name, phone, address) lặp lại và làm class Report cồng kềnh.
+Refactor: Extract Class (Tách các thuộc tính liên quan thành một đối tượng riêng).
+
+class Author {
+    private String email;
+    private String name;
+    private String phone;
+    private String address;
+}
+
+class Report {
+    private String title;
+    private String content;
+    private Author author; // Gom nhóm thông tin tác giả
+}

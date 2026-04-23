@@ -1,0 +1,1 @@
+khi thêm loại đơn hàng mới: sửa 2 chỗ ở getDeliveryFee và getLabel
