@@ -59,5 +59,6 @@
   "java.project.sourcePaths": [
     "LTNC\\TranManhThang_25022016_Week1\\Bai01\\src"
   ],
-  "java.project.referencedLibraries": []
+  "java.project.referencedLibraries": [],
+  "java.compile.nullAnalysis.mode": "automatic"
 }

@@ -1,0 +1,23 @@
+2. Giải thích giải pháp
+a. Nâng cấp phiên bản Java (Crucial Step)
+Vấn đề: Dự án cũ dùng Java 1.8. Tuy nhiên, Hibernate 6.2 và Logback 1.4 yêu cầu môi trường chạy tối thiểu là Java 11 (Hibernate 6 thậm chí khuyến khích Java 17).
+
+Giải pháp: Nâng cấp <maven.compiler.source> và target lên 17. Nếu không nâng cấp, Maven sẽ báo lỗi biên dịch khi tải các thư viện hiện đại này.
+
+b. Thay thế JUnit 4 bằng JUnit Jupiter (JUnit 5)
+Vấn đề: Yêu cầu chuyển sang JUnit 5 làm công cụ duy nhất.
+
+Giải pháp: Xóa bỏ dependency junit:junit:4.10. Thay vào đó, thêm org.junit.jupiter:junit-jupiter. Artifact này là một "aggregator" bao gồm cả API để viết code test và Engine để chạy test.
+
+c. Tích hợp Logging có cấu trúc
+Giải pháp: Thêm logback-classic. Thư viện này tự động kéo theo slf4j-api. Việc này giúp lập trình viên sử dụng các hàm như logger.info("User {} logged in", username); thay vì dùng System.out.println, giúp quản lý log tốt hơn theo level (INFO, ERROR, DEBUG).
+
+d. Quản lý Hibernate và Xung đột Dependency
+Hibernate 6.2 sử dụng Jakarta EE (thay cho Java EE cũ). Điều này có thể gây xung đột nếu dự án có các thư viện cũ dùng javax.persistence.
+
+Giải pháp: Khi nâng cấp Hibernate lên 6.x, tôi cũng cập nhật các thư viện bổ trợ như Jackson và MySQL Connector lên bản mới nhất để đảm bảo chúng tương thích với Jakarta EE và Java 17.
+
+MySQL: Đổi từ mysql-connector-java (cũ) sang mysql-connector-j (mới nhất) để tương thích với các tiêu chuẩn bảo mật và hiệu suất mới.
+
+e. Sử dụng Properties
+Tôi đã đưa các phiên bản thư viện vào thẻ <properties>. Cách làm này giúp pom.xml gọn gàng hơn, dễ dàng nâng cấp đồng bộ nhiều thư viện liên quan chỉ bằng cách sửa một dòng duy nhất.

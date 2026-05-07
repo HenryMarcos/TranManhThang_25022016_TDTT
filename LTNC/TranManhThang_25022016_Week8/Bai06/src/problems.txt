@@ -1,0 +1,10 @@
+Các nhiệm vụ mà StudentManager đang "ôm đồm"
+Hiện tại, lớp này đang phải gánh 4 trách nhiệm hoàn toàn khác biệt nhau:
+
+Quản lý thông tin sinh viên: Lưu trữ studentId, name, gpa.
+
+Quản lý thông tin môn học: Lưu trữ courseId, courseName, credits.
+
+Quản lý điểm số và logic xếp loại: Lưu trữ các đầu điểm (midtermScore, finalScore, assignmentScore), đồng thời chứa logic nghiệp vụ để tính điểm tổng kết và xếp loại học lực.
+
+Xử lý hiển thị (Presentation): Đảm nhận luôn việc in bảng điểm ra màn hình qua hàm printTranscript().
